@@ -3,12 +3,18 @@ import {
     Navbar, NavbarContent, NavbarMenuToggle, NavbarBrand,
     NavbarItem, Button, NavbarMenu, NavbarMenuItem
 } from '@nextui-org/react'
+import { Session } from 'next-auth';
 import Link from 'next/link'
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import { GiMatchTip } from 'react-icons/gi';
+import { GiLovers } from 'react-icons/gi';
+import UserMenu from './UserMenu';
 
-export default function TopNav() {
+type Props = {
+    session: Session | null
+}
+
+export default function TopNav({ session }: Props) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const pathName = usePathname();
 
@@ -29,7 +35,7 @@ export default function TopNav() {
             <NavbarContent>
                 <NavbarMenuToggle className="sm:hidden" />
                 <NavbarBrand as={Link} href='/'>
-                    <GiMatchTip className='text-gray-100' size={40} />
+                    <GiLovers className='text-gray-100' size={40} />
                     <div className='font-bold text-3xl flex'>
                         <span className='text-gray-600'>Next</span>
                         <span className='text-gray-100'>Match</span>
@@ -42,31 +48,39 @@ export default function TopNav() {
                         as={Link}
                         href={item.href}
                         isActive={pathName === item.href}
-                        className={`${pathName === item.href ? 'text-gray-600' : ''} hover:text-gray-600`}
+                        className={`${pathName === item.href ? '' : 'text-gray-800'} hover:text-white`}
                         key={index}>
                         {item.label}
                     </NavbarItem>
                 ))}
             </NavbarContent>
             <NavbarContent justify="end">
-                <Button
-                    as={Link} href='/login'
-                    variant='bordered'
-                    className='text-white'>
-                    Login
-                </Button>
-                <Button
-                    as={Link} href='/register'
-                    variant='bordered'
-                    className='text-white'>
-                    Register
-                </Button>
+                {session?.user
+                    ?
+                    (<UserMenu user={session?.user} />) : (
+                        <>
+                            <Button
+                                onClick={() => { setIsMenuOpen(false) }}
+                                as={Link} href='/login'
+                                variant='bordered'
+                                className='text-white'>
+                                Login
+                            </Button>
+                            <Button
+                                onClick={() => { setIsMenuOpen(false) }}
+                                as={Link} href='/register'
+                                variant='bordered'
+                                className='text-white'>
+                                Register
+                            </Button>
+                        </>
+                    )}
             </NavbarContent>
             <NavbarMenu className='bg-gradient-to-r from-pink-300 to-pink-800'>
                 {menuItems.map((item, index) => (
                     <NavbarMenuItem key={index} isActive={pathName === item.href}>
                         <Link
-                            className={`${pathName === item.href ? 'text-gray-600' : 'text-white'} hover:text-gray-600`}
+                            className={`${pathName === item.href ? 'text-white' : 'text-gray-600'} hover:text-white`}
                             href={item.href}
                             onClick={() => { setIsMenuOpen(!isMenuOpen) }}>
                             {item.label}
