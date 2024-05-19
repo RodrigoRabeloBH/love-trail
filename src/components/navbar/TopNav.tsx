@@ -22,7 +22,7 @@ export default function TopNav() {
         <Navbar
             isMenuOpen={isMenuOpen}
             onMenuOpenChange={setIsMenuOpen}
-            className='bg-gradient-to-r from-pink-300 to-pink-600'
+            className='bg-gradient-to-r from-pink-400 to-pink-800'
             classNames={{ item: ['text-md', 'text-white'] }}
             position='sticky'
         >
@@ -62,7 +62,7 @@ export default function TopNav() {
                     Register
                 </Button>
             </NavbarContent>
-            <NavbarMenu className='bg-gradient-to-r from-pink-300 to-pink-600'>
+            <NavbarMenu className='bg-gradient-to-r from-pink-300 to-pink-800'>
                 {menuItems.map((item, index) => (
                     <NavbarMenuItem key={index} isActive={pathName === item.href}>
                         <Link
