@@ -15,11 +15,10 @@ export default auth((req) => {
     if (isAuthRoute) {
         if (isLoggedIn)
             return NextResponse.redirect(new URL('/members', nextUrl));
-        else
-            return NextResponse.next();
+        return NextResponse.next();
     }
 
-    if (!isPublicRoute)
+    if (!isPublicRoute && !isLoggedIn)
         return NextResponse.redirect(new URL('/login', nextUrl));
 
     return NextResponse.next();

@@ -63,6 +63,7 @@ export default function TopNav({ session }: Props) {
                                 onClick={() => { setIsMenuOpen(false) }}
                                 as={Link} href='/login'
                                 variant='bordered'
+                                size='sm'
                                 className='text-white'>
                                 Login
                             </Button>
@@ -70,6 +71,7 @@ export default function TopNav({ session }: Props) {
                                 onClick={() => { setIsMenuOpen(false) }}
                                 as={Link} href='/register'
                                 variant='bordered'
+                                size='sm'
                                 className='text-white'>
                                 Register
                             </Button>
