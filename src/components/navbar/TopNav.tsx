@@ -28,7 +28,7 @@ export default function TopNav({ session }: Props) {
         <Navbar
             isMenuOpen={isMenuOpen}
             onMenuOpenChange={setIsMenuOpen}
-            className='bg-gradient-to-r from-pink-400 to-pink-800'
+            className='bg-gradient-to-r from-purple-400 to-purple-800'
             classNames={{ item: ['text-md', 'text-white'] }}
             position='sticky'
         >
@@ -48,7 +48,7 @@ export default function TopNav({ session }: Props) {
                         as={Link}
                         href={item.href}
                         isActive={pathName === item.href}
-                        className={`${pathName === item.href ? '' : 'text-gray-800'} hover:text-white`}
+                        className={`${pathName === item.href ? '' : 'text-white'} hover:text-yellow-200`}
                         key={index}>
                         {item.label}
                     </NavbarItem>
@@ -78,11 +78,11 @@ export default function TopNav({ session }: Props) {
                         </>
                     )}
             </NavbarContent>
-            <NavbarMenu className='bg-gradient-to-r from-pink-300 to-pink-800'>
+            <NavbarMenu className='bg-gradient-to-r from-purple-400 to-purple-800'>
                 {menuItems.map((item, index) => (
                     <NavbarMenuItem key={index} isActive={pathName === item.href}>
                         <Link
-                            className={`${pathName === item.href ? 'text-white' : 'text-gray-600'} hover:text-white`}
+                            className={`${pathName === item.href ? 'text-yellow-200' : 'text-white'} hover:text-yellow-200`}
                             href={item.href}
                             onClick={() => { setIsMenuOpen(!isMenuOpen) }}>
                             {item.label}

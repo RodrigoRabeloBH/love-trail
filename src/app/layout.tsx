@@ -3,6 +3,7 @@ import "./globals.css";
 import Providers from "@/components/Providers";
 import TopNav from "@/components/navbar/TopNav";
 import { auth } from "@/auth";
+import Footer from "@/components/footer/Footer";
 
 export const metadata: Metadata = {
   title: "Next Match",
@@ -24,6 +25,7 @@ export default async function RootLayout({
           <main className="container mx-auto p-5">
             {children}
           </main>
+          <Footer />
         </Providers>
       </body>
     </html>

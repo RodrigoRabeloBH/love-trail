@@ -14,8 +14,9 @@ export default function UserMenu({ user }: Props) {
         <Dropdown placement='bottom-end'>
             <DropdownTrigger>
                 <Avatar
+                    isBordered
                     as='button'
-                    className='transition-transform bg-pink-400'
+                    className='transition-transform bg-purple-300'
                     name={user?.name || 'user avatar'}
                     size='sm'
                     src={user?.image || '/images/user.png'}
@@ -34,7 +35,7 @@ export default function UserMenu({ user }: Props) {
                 <DropdownItem as={Link} href='/members/edit'>
                     Edit profile
                 </DropdownItem>
-                <DropdownItem color='danger' onClick={async () => signOutUser()}>
+                <DropdownItem color='secondary' onClick={async () => signOutUser()}>
                     Logout
                 </DropdownItem>
             </DropdownMenu>
