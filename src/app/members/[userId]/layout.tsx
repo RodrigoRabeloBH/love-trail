@@ -13,7 +13,7 @@ export default async function Layout({ children, params }
 
     return (
         <div className='xl:grid grid-cols-12 gap-5'>
-            <div className='col-span-3 h-[80vh]'>
+            <div className='col-span-3 h-[60vh] md:h-[80vh]'>
                 <MemberSidebar member={member} />
             </div>
             <div className='col-span-9'>

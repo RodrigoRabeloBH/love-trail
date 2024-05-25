@@ -2,6 +2,7 @@
 
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
+import { Photo } from "@prisma/client";
 
 export async function getMembers() {
     const session = await auth();
@@ -29,6 +30,24 @@ export async function getMemberByUserId(userId: string) {
                 userId: userId
             }
         })
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export async function getMemberPhotosByUserId(userId: string)
+    : Promise<Photo[] | null | undefined> {
+    try {
+        const member = await prisma.member.findUnique({
+            where: { userId },
+            select: { photos: true }
+        });
+
+        if (!member)
+            return null;
+
+        return member.photos.map(p => p) as Photo[];
+
     } catch (error) {
         console.error(error);
     }

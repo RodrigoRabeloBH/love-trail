@@ -21,7 +21,7 @@ export default function MemberSidebar({ member }: Props) {
         { name: 'Chat', href: `${basePath}/chat` }
     ]
     return (
-        <Card className='w-full mt-10 items-center h-[80vh]'>
+        <Card className='w-full mt-10 items-center h-[60vh] md:h-[80vh]'>
             <Image
                 width={200}
                 height={200}

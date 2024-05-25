@@ -5,9 +5,7 @@ import { GiLovers } from 'react-icons/gi'
 export default function Footer() {
     return (
         <footer className='bg-gradient-to-r from-purple-400 to-purple-800 py-6 mt-10'>
-            <div
-                className='container mx-auto flex flex-col md:flex-row items-center justify-between px-4'
-            >
+            <div className='container mx-auto flex flex-col md:flex-row items-center justify-between px-4'>
                 <div className='mb-4 md:mb-0'>
                     <Link href={'/'}>
                         <GiLovers className='text-gray-100' size={30} />
