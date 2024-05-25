@@ -26,8 +26,6 @@ export async function signInUser(data: LoginSchema): Promise<ActionResult<string
             password: data.password,
             redirect: false
         });
-
-        console.log(result);
         return { status: 'success', data: 'Logged in' };
     } catch (error) {
         console.error(error);
@@ -53,7 +51,7 @@ export async function registerUser(data: RegisterSchema): Promise<ActionResult<U
 
         const { name, email, password } = validated.data;
         const hashedPassword = await bcrypt.hash(password, 10);
-        const existingUser = await prisma.user.findUnique({ where: { email } });
+        const existingUser = await getUserByEmail(email);
 
         if (existingUser)
             return { error: 'Email already exists', status: 'error' };
@@ -77,4 +75,14 @@ export async function getUserByEmail(email: string) {
 }
 export async function getUserById(id: string) {
     return prisma.user.findUnique({ where: { id } });
+}
+
+export async function getAuthUserId() {
+    const session = await auth();
+    const userId = session?.user?.id;
+
+    if (!userId)
+        throw new Error('Unauthorized');
+
+    return userId;
 }

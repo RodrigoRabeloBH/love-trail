@@ -30,15 +30,15 @@ export default function TopNav({ session }: Props) {
             onMenuOpenChange={setIsMenuOpen}
             className='bg-gradient-to-r from-purple-400 to-purple-800'
             classNames={{ item: ['text-md', 'text-white'] }}
-            position='sticky'
+            shouldHideOnScroll
         >
             <NavbarContent>
                 <NavbarMenuToggle className="sm:hidden" />
                 <NavbarBrand as={Link} href='/'>
                     <GiLovers className='text-gray-100' size={40} />
                     <div className='font-bold text-3xl flex'>
-                        <span className='text-gray-600'>Next</span>
-                        <span className='text-gray-100'>Match</span>
+                        <span className='text-gray-600'>Match</span>
+                        <span className='text-gray-100'>Maker</span>
                     </div>
                 </NavbarBrand>
             </NavbarContent>
@@ -48,7 +48,7 @@ export default function TopNav({ session }: Props) {
                         as={Link}
                         href={item.href}
                         isActive={pathName === item.href}
-                        className={`${pathName === item.href ? '' : 'text-white'} hover:text-yellow-200`}
+                        className={`${pathName === item.href ? 'text-yellow-200' : 'text-white'} hover:text-yellow-200`}
                         key={index}>
                         {item.label}
                     </NavbarItem>

@@ -22,16 +22,16 @@ export default function MemberSidebar({ member }: Props) {
     ]
     return (
         <Card className='w-full mt-10 items-center h-[60vh] md:h-[80vh]'>
-            <Image
-                width={200}
-                height={200}
-                src={member.image || '/images/user.png'}
-                alt={member.name}
-                className='rounded-full mt-6 aspect-square object-cover'
-            />
             <CardBody>
                 <div className='flex flex-col items-center'>
-                    <div className='text-2xl'>
+                    <Image
+                        width={200}
+                        height={200}
+                        src={member.image || '/images/user.png'}
+                        alt={member.name}
+                        className='rounded-full aspect-square object-cover mb-2'
+                    />
+                    <div className='text-2xl mb-2'>
                         {member.name}, {calculateAge(member.dateOfBirth)}
                     </div>
                     <div className='text-sm text-neutral-500'>
@@ -39,7 +39,7 @@ export default function MemberSidebar({ member }: Props) {
                     </div>
                 </div>
                 <Divider className='my-3' />
-                <nav className='flex flex-col p-4 ml-4 gap-2 overflow-hidden text-xl'>
+                <nav className='flex flex-col p-4 ml-4 gap-2 md:overflow-hidden text-xl'>
                     {navLinks.map((link, index) => (
                         <Link
                             key={index}

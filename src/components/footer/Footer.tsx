@@ -8,12 +8,12 @@ export default function Footer() {
             <div className='container mx-auto flex flex-col md:flex-row items-center justify-between px-4'>
                 <div className='mb-4 md:mb-0'>
                     <Link href={'/'}>
-                        <GiLovers className='text-gray-100' size={30} />
+                        <GiLovers className='text-gray-100' size={40} />
                     </Link>
                 </div>
                 <div>
                     <p className='text-sm text-white mt-2 md:mt-0'>
-                        &copy; 2024 NextMatch - All rights reserved.
+                        &copy; 2024 MatchMaker - All rights reserved.
                     </p>
                 </div>
                 <div>
