@@ -36,9 +36,9 @@ export default function TopNav({ session }: Props) {
                 <NavbarMenuToggle className="sm:hidden" />
                 <NavbarBrand as={Link} href='/'>
                     <GiLovers className='text-gray-100' size={40} />
-                    <div className='font-bold text-3xl flex'>
-                        <span className='text-gray-600'>Match</span>
-                        <span className='text-gray-100'>Maker</span>
+                    <div className='font-bold text-2xl flex md:text-3xl'>
+                        <span className='text-gray-600'>Love</span>
+                        <span className='text-gray-100'>Trail</span>
                     </div>
                 </NavbarBrand>
             </NavbarContent>

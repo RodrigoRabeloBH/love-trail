@@ -38,7 +38,7 @@ export default function LoginForm() {
                         <h1 className='text-xl font-semibold'>Login</h1>
                     </div>
                     <p className='text-neutral-500'>
-                        Welcome back to NextMatch
+                        Welcome back to LoveTrail
                     </p>
                 </div>
             </CardHeader>

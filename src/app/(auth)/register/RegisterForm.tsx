@@ -42,7 +42,7 @@ export default function RegisterForm() {
                         <h1 className='text-xl font-semibold'>Register</h1>
                     </div>
                     <p className='text-neutral-500'>
-                        Welcome to NextMatch
+                        Welcome to LoveTrail
                     </p>
                 </div>
             </CardHeader>

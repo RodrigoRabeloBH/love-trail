@@ -13,7 +13,7 @@ export default function Footer() {
                 </div>
                 <div>
                     <p className='text-sm text-white mt-2 md:mt-0'>
-                        &copy; 2024 MatchMaker - All rights reserved.
+                        &copy; 2024 LoveTrail - All rights reserved.
                     </p>
                 </div>
                 <div>
