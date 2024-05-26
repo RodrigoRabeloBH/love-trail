@@ -1,23 +1,24 @@
+import { getAuthUserId } from '@/app/actions/authActions';
 import { getMemberByUserId } from '@/app/actions/memberActions';
 import MemberSidebar from '@/components/members/MemberSidebar';
 import { Card } from '@nextui-org/react';
 import { notFound } from 'next/navigation';
 import React, { ReactNode } from 'react'
 
-export default async function Layout({ children, params }
-    : { children: ReactNode, params: { userId: string } }) {
-    const member = await getMemberByUserId(params.userId);
+export default async function Layout({ children }: { children: ReactNode }) {
+    const userId = await getAuthUserId();
+    const member = await getMemberByUserId(userId);
+
+    const basePath = `/members/edit`;
+
+    const navLinks = [
+        { name: 'Edit Profile', href: `${basePath}` },
+        { name: 'Update Photos', href: `${basePath}/photos` }
+    ];
 
     if (!member)
         return notFound();
 
-    const basePath = `/members/${member.userId}`;
-
-    const navLinks = [
-        { name: 'Profile', href: `${basePath}` },
-        { name: 'Photos', href: `${basePath}/photos` },
-        { name: 'Chat', href: `${basePath}/chat` }
-    ];
 
     return (
         <div className="container mx-auto p-5">

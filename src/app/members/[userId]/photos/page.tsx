@@ -12,7 +12,7 @@ export default async function PhotosPage({ params }: { params: { userId: string 
             </CardHeader>
             <Divider />
             <CardBody>
-                <div className="grid grid-cols-3 md:grid-cols-5 gap-3">
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-3 p-5">
                     {photos && photos.map(photo => (
                         <div key={photo.id}>
                             <Image
@@ -20,7 +20,7 @@ export default async function PhotosPage({ params }: { params: { userId: string 
                                 src={photo.url}
                                 width={300}
                                 height={300}
-                                className='object-cover aspect-square mt-2'
+                                className='object-cover aspect-square'
                             />
                         </div>
                     ))}
