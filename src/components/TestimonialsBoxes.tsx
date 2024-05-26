@@ -1,13 +1,14 @@
 import React from 'react'
 import Testimonial from './Testimonial'
+import { Button } from '@nextui-org/react'
 
 export default function TestimonialsBoxes() {
     return (
         <section className='p-10'>
             <div className='container mx-auto mt-5'>
                 <div className='flex justify-center items-center mb-10'>
-                    <h2 className='text-purple-500 text-2xl font-bold md:text-4xl'>
-                        What’s different about Manage?
+                    <h2 className='text-purple-500 text-2xl font-bold md:text-5xl'>
+                        What’s different about LoveTrail?
                     </h2>
                 </div>
                 <div className='flex flex-col md:flex-row gap-4 rounded-lg'>
@@ -47,6 +48,13 @@ export default function TestimonialsBoxes() {
                             <span className='text-yellow-300 text-xl'>★★★★☆</span>
                         </p>
                     </Testimonial>
+                </div>
+                <div className='flex justify-center items-center mt-20'>
+                    <Button
+                        className='bg-purple-500 text-white w-1/2 md:w-1/4'
+                    >
+                        Get Started
+                    </Button>
                 </div>
             </div>
         </section>

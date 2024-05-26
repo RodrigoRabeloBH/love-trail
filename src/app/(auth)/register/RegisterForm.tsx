@@ -5,6 +5,7 @@ import { RegisterSchema, registerSchema } from '@/lib/schemas/registerSchema';
 import { handleFormServerErros } from '@/lib/util';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, Card, CardBody, CardHeader, Input } from '@nextui-org/react'
+import Link from 'next/link';
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { GiEyeTarget, GiEyelashes, GiKeyLock } from 'react-icons/gi'
@@ -93,6 +94,13 @@ export default function RegisterForm() {
                             color='secondary'>
                             Register
                         </Button>
+                        <div className='flex justify-center items-center'>
+                            <Link
+                                className='text-default-500'
+                                href={'/login'}>
+                                Already registered?
+                            </Link>
+                        </div>
                     </div>
                 </form>
             </CardBody>
