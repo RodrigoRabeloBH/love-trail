@@ -12,8 +12,8 @@ export default function StarButton({ loading, selected }: Props) {
             {!loading
                 ? (
                     <>
-                        <AiOutlineStar size={22} className='fill-white absolute -top-[2px] -right-[2px]' />
-                        <AiFillStar size={18} className={selected ? 'fill-yellow-200' : 'fill-neutral-300/30'} />
+                        <AiOutlineStar size={32} className='fill-white absolute -top-[2px] -right-[2px]' />
+                        <AiFillStar size={28} className={selected ? 'fill-yellow-400' : 'fill-neutral-500/50'} />
                     </>
                 ) : (
                     <>

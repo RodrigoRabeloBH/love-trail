@@ -34,7 +34,8 @@ export default function EditForm({ member }: Props) {
     }, [member, reset]);
 
     const onSubmit = async (data: MemberEditSchema) => {
-        const result = await updateMemberProfile(data);
+        const nameUpdated = member.name !== data.name;
+        const result = await updateMemberProfile(data, nameUpdated);
 
         if (result.status === 'success') {
             toast.success('Profile updated');
@@ -49,6 +50,7 @@ export default function EditForm({ member }: Props) {
             className='flex flex-col space-y-4'
             autoComplete='off'>
             <Input
+                autoComplete='off'
                 label='Name'
                 variant='bordered'
                 {...register('name')}
@@ -67,6 +69,7 @@ export default function EditForm({ member }: Props) {
             />
             <div className='flex gap-3 flex-col md:flex-row'>
                 <Input
+                    autoComplete='off'
                     label='City'
                     variant='bordered'
                     {...register('city')}
@@ -75,6 +78,7 @@ export default function EditForm({ member }: Props) {
                     errorMessage={errors.city?.message}
                 />
                 <Input
+                    autoComplete='off'
                     label='Country'
                     variant='bordered'
                     {...register('country')}

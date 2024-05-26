@@ -12,8 +12,8 @@ export default function DeleteButton({ loading }: Props) {
             {!loading
                 ? (
                     <>
-                        <AiOutlineDelete size={22} className='fill-white absolute -top-[2px] -right-[2px]' />
-                        <AiFillDelete size={18} className='fill-red-600' />
+                        <AiOutlineDelete size={32} className='fill-white absolute -top-[2px] -right-[2px]' />
+                        <AiFillDelete size={28} className='fill-red-600' />
                     </>
                 ) : (
                     <>

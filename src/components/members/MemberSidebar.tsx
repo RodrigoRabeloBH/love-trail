@@ -53,7 +53,7 @@ export default function MemberSidebar({ member, navLinks }: Props) {
                     as={Link}
                     href='/members'
                     fullWidth
-                    color='secondary'
+                    className='bg-purple-600 text-white'
                 >
                     Go back
                 </Button>

@@ -1,6 +1,7 @@
 import React from 'react'
 import Testimonial from './Testimonial'
 import { Button } from '@nextui-org/react'
+import Link from 'next/link'
 
 export default function TestimonialsBoxes() {
     return (
@@ -51,6 +52,8 @@ export default function TestimonialsBoxes() {
                 </div>
                 <div className='flex justify-center items-center mt-20'>
                     <Button
+                        as={Link}
+                        href='/login'
                         className='bg-purple-500 text-white w-1/2 md:w-1/4'
                     >
                         Get Started
