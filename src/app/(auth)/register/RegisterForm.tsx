@@ -2,8 +2,10 @@
 
 import { registerUser } from '@/app/actions/authActions';
 import { RegisterSchema, registerSchema } from '@/lib/schemas/registerSchema';
+import { handleFormServerErros } from '@/lib/util';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, Card, CardBody, CardHeader, Input } from '@nextui-org/react'
+import Link from 'next/link';
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { GiEyeTarget, GiEyelashes, GiKeyLock } from 'react-icons/gi'
@@ -21,16 +23,8 @@ export default function RegisterForm() {
 
         if (result.status === 'success')
             reset();
-        else {
-            if (Array.isArray(result.error)) {
-                result.error.map((e) => {
-                    const fieldName = e.path.join('.') as 'email' | 'name' | 'password';
-                    setError(fieldName, { message: e.message })
-                });
-            } else {
-                setError('root.serverError', { message: result.error });
-            }
-        }
+        else
+            handleFormServerErros(result, setError);
     }
 
     return (
@@ -100,6 +94,13 @@ export default function RegisterForm() {
                             color='secondary'>
                             Register
                         </Button>
+                        <div className='flex justify-center items-center'>
+                            <Link
+                                className='text-default-500'
+                                href={'/login'}>
+                                Already registered?
+                            </Link>
+                        </div>
                     </div>
                 </form>
             </CardBody>

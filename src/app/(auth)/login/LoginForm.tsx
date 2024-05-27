@@ -3,6 +3,7 @@ import { signInUser } from '@/app/actions/authActions';
 import { LoginSchema, loginSchema } from '@/lib/schemas/loginSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, Card, CardBody, CardHeader, Input } from '@nextui-org/react'
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
@@ -85,6 +86,13 @@ export default function LoginForm() {
                             color='secondary'>
                             Login
                         </Button>
+                        <div className='flex justify-center items-center'>
+                            <Link
+                                className='text-default-500 my-2'
+                                href={'/register'}>
+                                I’m not registered
+                            </Link>
+                        </div>
                     </div>
                 </form>
             </CardBody>
