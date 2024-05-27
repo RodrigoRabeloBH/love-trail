@@ -13,13 +13,16 @@ export default async function PhotosEditPage() {
 
     return (
         <>
-            <CardHeader className='text-2xl font-semibold text-secondary'>
-                Edit Photos
+            <CardHeader className='flex justify-between items-center'>
+                <div className='text-2xl font-semibold text-secondary'>
+                    Edit Photos
+                </div>
+                <MemberPhotoUpload />
             </CardHeader>
             <Divider />
             <CardBody>
-                <MemberPhotoUpload />
-                <MemberPhotos photos={photos!} editing={true} mainImageUrl={member?.image}/>
+
+                <MemberPhotos photos={photos!} editing={true} mainImageUrl={member?.image} />
             </CardBody>
         </>
     )

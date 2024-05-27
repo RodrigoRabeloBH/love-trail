@@ -66,7 +66,7 @@ export default function TopNav({ session }: Props) {
                 ))}
             </NavbarContent>
             <NavbarContent justify="end">
-                {session?.user && userInfo.image && userInfo.name
+                {session?.user
                     ?
                     (<UserMenu userInfo={userInfo} />) : (
                         <>
