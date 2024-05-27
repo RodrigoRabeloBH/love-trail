@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
+import { FaArrowRight } from 'react-icons/fa';
 import { GiEyeTarget, GiEyelashes, GiPadlock } from 'react-icons/gi'
 import { toast } from 'react-toastify';
 
@@ -88,10 +89,11 @@ export default function LoginForm() {
                         </Button>
                         <div className='flex justify-center items-center'>
                             <Link
-                                className='text-default-500 my-2'
+                                className='text-purple-500'
                                 href={'/register'}>
                                 I’m not registered
                             </Link>
+                            <FaArrowRight className='mx-2 text-purple-500' />
                         </div>
                     </div>
                 </form>

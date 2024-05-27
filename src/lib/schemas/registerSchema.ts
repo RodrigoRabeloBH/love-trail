@@ -7,7 +7,17 @@ export const registerSchema = z.object({
     }),
     password: z.string().min(6, {
         message: 'Password must be at least 6 characters'
-    })
+    }),
+    gender: z.string().min(4, {
+        message: 'Gender is required'
+    }),
+    dateOfBirth: z.string().date(),
+    city: z.string().min(2, {
+        message: 'City is required'
+    }),
+    country: z.string().min(2, {
+        message: 'Country is required'
+    }),
 });
 
 export type RegisterSchema = z.infer<typeof registerSchema>;

@@ -9,8 +9,6 @@ import { User } from "@prisma/client";
 import bcrypt from 'bcryptjs';
 import { AuthError } from "next-auth";
 
-
-
 export async function getSessionUser() {
     const session = await auth();
     return session;
@@ -60,8 +58,21 @@ export async function registerUser(data: RegisterSchema): Promise<ActionResult<U
             data: {
                 name,
                 email,
-                passwordHash: hashedPassword
-            },
+                passwordHash: hashedPassword,
+                emailVerified: new Date(),
+                member: {
+                    create: {
+                        city: validated.data.city,
+                        country: validated.data.country,
+                        dateOfBirth: new Date(validated.data.dateOfBirth),
+                        gender: validated.data.gender,
+                        description: '',
+                        name: name,
+                        created: new Date(),
+                        updated: new Date()
+                    }
+                }
+            }
         });
         return { status: 'success', data: user };
     } catch (error) {
