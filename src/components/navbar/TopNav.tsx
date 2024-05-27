@@ -6,9 +6,10 @@ import {
 import { Session } from 'next-auth';
 import Link from 'next/link'
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { GiLovers } from 'react-icons/gi';
 import UserMenu from './UserMenu';
+import { getUserInfoForNav } from '@/app/actions/userActions';
 
 type Props = {
     session: Session | null
@@ -17,12 +18,22 @@ type Props = {
 export default function TopNav({ session }: Props) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const pathName = usePathname();
+    const [userInfo, setUserInfo] = useState({ name: null, image: null });
 
     const menuItems = [
         { 'label': 'Matches', 'href': '/members' },
         { 'label': 'Lists', 'href': '/lists' },
         { 'label': 'Messages', 'href': '/messages' }
     ];
+
+    useEffect(() => {
+        if (session?.user) {
+            getUserInfoForNav()
+                .then((res: any) => {
+                    setUserInfo({ name: res.name, image: res.image })
+                });
+        }
+    }, [userInfo.image, userInfo.name, session?.user])
 
     return (
         <Navbar
@@ -55,9 +66,9 @@ export default function TopNav({ session }: Props) {
                 ))}
             </NavbarContent>
             <NavbarContent justify="end">
-                {session?.user
+                {session?.user && userInfo.image && userInfo.name
                     ?
-                    (<UserMenu user={session?.user} />) : (
+                    (<UserMenu userInfo={userInfo} />) : (
                         <>
                             <Button
                                 onClick={() => { setIsMenuOpen(false) }}

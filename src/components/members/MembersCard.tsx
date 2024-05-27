@@ -12,7 +12,7 @@ type Props = {
 
 export default function MembersCard({ member, likeIds }: Props) {
     const hasLiked = likeIds.includes(member.userId);
-    
+
     return (
         <Card
             as={Link}
