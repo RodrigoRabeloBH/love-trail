@@ -4,14 +4,17 @@ import { registerUser } from '@/app/actions/authActions';
 import { RegisterSchema, registerSchema } from '@/lib/schemas/registerSchema';
 import { handleFormServerErros } from '@/lib/util';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button, Card, CardBody, CardHeader, Input } from '@nextui-org/react'
+import { Button, Card, CardBody, CardHeader, Input, Select, SelectItem } from '@nextui-org/react'
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
+import { FaArrowRight } from 'react-icons/fa';
 import { GiEyeTarget, GiEyelashes, GiKeyLock } from 'react-icons/gi'
 
 export default function RegisterForm() {
     const [isVisible, setIsVisible] = useState(false);
+    const router = useRouter();
     const { register, handleSubmit, setError, reset, formState: { errors, isValid, isSubmitting } }
         = useForm<RegisterSchema>({
             resolver: zodResolver(registerSchema),
@@ -19,10 +22,15 @@ export default function RegisterForm() {
         });
 
     const onsubmit = async (data: RegisterSchema) => {
+
+        console.log(data);
+
         const result = await registerUser(data);
 
-        if (result.status === 'success')
+        if (result.status === 'success') {
             reset();
+            router.push('/login');
+        }
         else
             handleFormServerErros(result, setError);
     }
@@ -61,6 +69,52 @@ export default function RegisterForm() {
                             isInvalid={!!errors.email}
                             errorMessage={errors.email?.message}
                         />
+                        <div className='flex flex-col md:flex-row gap-2'>
+                            <Input
+                                defaultValue=''
+                                label='City'
+                                variant='bordered'
+                                autoComplete='off'
+                                {...register('city')}
+                                isInvalid={!!errors.city}
+                                errorMessage={errors.city?.message}
+                            />
+                            <Input
+                                defaultValue=''
+                                label='Country'
+                                variant='bordered'
+                                autoComplete='off'
+                                {...register('country')}
+                                isInvalid={!!errors.country}
+                                errorMessage={errors.country?.message}
+                            />
+                        </div>
+                        <div className='flex flex-col md:flex-row gap-2'>
+                            <Input
+                                defaultValue=''
+                                label='Birth Date'
+                                variant='bordered'
+                                autoComplete='off'
+                                type='date'
+                                {...register('dateOfBirth')}
+                                isInvalid={!!errors.dateOfBirth}
+                                errorMessage={errors.dateOfBirth?.message}
+                            />
+                            <Select
+                                label="Select a gender"
+                                variant='bordered'
+                                {...register('gender')}
+                                isInvalid={!!errors.gender}
+                                errorMessage={errors.gender?.message}
+                            >
+                                <SelectItem key='female' value='female'>
+                                    Female
+                                </SelectItem>
+                                <SelectItem key='male' value='male'>
+                                    Male
+                                </SelectItem>
+                            </Select>
+                        </div>
                         <Input
                             {...register('password')}
                             isInvalid={!!errors.password}
@@ -96,10 +150,11 @@ export default function RegisterForm() {
                         </Button>
                         <div className='flex justify-center items-center'>
                             <Link
-                                className='text-default-500'
+                                className='text-purple-500'
                                 href={'/login'}>
                                 Already registered?
                             </Link>
+                            <FaArrowRight className='mx-2 text-purple-500' />
                         </div>
                     </div>
                 </form>

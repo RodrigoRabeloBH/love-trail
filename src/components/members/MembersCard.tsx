@@ -1,4 +1,4 @@
-import { calculateAge } from '@/lib/util'
+import { calculateAge, transformImageUrl } from '@/lib/util'
 import { Card, CardBody, CardFooter, Image } from '@nextui-org/react'
 import { Member } from '@prisma/client'
 import Link from 'next/link'
@@ -24,7 +24,7 @@ export default function MembersCard({ member, likeIds }: Props) {
                     isZoomed
                     alt={member.name}
                     width="100%"
-                    src={member.image || '/images/user.png'}
+                    src={transformImageUrl(member.image) || '/images/user.png'}
                     className='aspect-square object-cover'
                 />
                 <div className='absolute top-3 right-3 z-50'>
