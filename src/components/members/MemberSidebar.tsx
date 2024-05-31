@@ -16,7 +16,7 @@ export default function MemberSidebar({ member, navLinks }: Props) {
     const pathname = usePathname();
 
     return (
-        <Card className='w-full mt-10 items-center h-[60vh] md:h-[80vh]'>
+        <Card className='w-full mt-10 items-center h-[60vh] md:h-[75vh]'>
             <CardBody>
                 <div className='flex flex-col items-center'>
                     <Image

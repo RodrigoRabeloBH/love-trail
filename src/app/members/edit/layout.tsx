@@ -23,11 +23,11 @@ export default async function Layout({ children }: { children: ReactNode }) {
     return (
         <div className="container mx-auto p-5">
             <div className='xl:grid grid-cols-12 gap-5'>
-                <div className='col-span-3 h-[60vh] md:h-[80vh]'>
+                <div className='col-span-3 h-[60vh] md:h-[75vh]'>
                     <MemberSidebar member={member} navLinks={navLinks} />
                 </div>
                 <div className='col-span-9'>
-                    <Card className='w-full mt-10 h-[80vh]'>
+                    <Card className='w-full mt-10 h-[75vh]'>
                         {children}
                     </Card>
                 </div>
