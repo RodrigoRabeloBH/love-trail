@@ -8,6 +8,7 @@ export default async function PhotosPage({ params }: { params: { userId: string 
     return (
         <CardInnerWrapper
             header='Photos'
-            body={<MemberPhotos photos={photos!} />} />
+            body={<MemberPhotos photos={photos!} />}
+        />
     )
 }
