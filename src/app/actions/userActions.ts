@@ -7,8 +7,6 @@ import { getAuthUserId } from "./authActions";
 import { prisma } from "@/lib/prisma";
 import { cloudinary } from "@/lib/cloudinary";
 
-export const dynamic = 'force-dynamic';
-
 export async function updateMemberProfile(data: MemberEditSchema, nameUpdated: boolean): Promise<ActionResult<Member>> {
     try {
         const userId = await getAuthUserId();

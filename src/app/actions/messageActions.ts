@@ -7,8 +7,6 @@ import { getAuthUserId } from "./authActions";
 import { prisma } from "@/lib/prisma";
 import { mapMessageToMessageDto } from "@/lib/mappings";
 
-export const dynamic = 'force-dynamic';
-
 export async function createMessage(recipientId: string, data: MessageSchema)
     : Promise<ActionResult<Message>> {
     try {
