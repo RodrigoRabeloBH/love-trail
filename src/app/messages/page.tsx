@@ -7,7 +7,7 @@ export default async function MessagesPage({ searchParams }: { searchParams: { c
     const messages = await getMessagesByContainer(searchParams.container);
 
     return (
-        <div className='container mx-auto h-[75vh] mt-10'>
+        <div className='container mx-auto'>
             <div className='flex flex-col mx-5 md:mx-0'>
                 <div className=''>
                     <MessageSidebar />
