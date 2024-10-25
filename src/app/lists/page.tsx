@@ -3,6 +3,7 @@ import ListsTab from '@/components/lists/ListsTab';
 import React from 'react';
 import { fetchCurrentUserLikeIds, fetchLikedMembers } from '../actions/likeActions';
 
+export const dynamic = 'force-dynamic';
 
 export default async function ListsPage({ searchParams }: { searchParams: { type: string } }) {
   const likedIds = await fetchCurrentUserLikeIds();
