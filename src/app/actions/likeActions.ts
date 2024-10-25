@@ -3,6 +3,8 @@
 import { prisma } from "@/lib/prisma";
 import { getAuthUserId } from "./authActions";
 
+export const dynamic = 'force-dynamic';
+
 export async function toggleLikeMember(targetUserId: string, isLiked: boolean) {
     try {
         const userId = await getAuthUserId();
