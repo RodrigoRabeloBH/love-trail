@@ -10,16 +10,18 @@ type Props = {
 export default function CardInnerWrapper({ body, header, footer }: Props) {
     return (
         <>
-            <CardHeader>
-                {typeof (header) === 'string' ? (
-                    <div className='text-2xl font-semibold text-secondary'>
-                        {header}
-                    </div>
-                ) : (
-                    <>
-                        {header}
-                    </>
-                )}
+            <CardHeader
+                className={
+                    typeof header !== "string" ? "flex justify-between items-center" : ""
+                }
+            >
+                {
+                    typeof header === 'string' ? (
+                        <div className='text-2xl font-semibold text-secondary'>{header}</div>
+                    ) : (
+                        <>{header}</>
+                    )
+                }
             </CardHeader>
             <Divider />
             <CardBody>

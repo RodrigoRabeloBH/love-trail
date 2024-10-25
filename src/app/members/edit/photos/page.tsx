@@ -4,6 +4,7 @@ import { getMemberByUserId, getMemberPhotosByUserId } from '@/app/actions/member
 import React from 'react'
 import MemberPhotos from '@/components/MemberPhotos';
 import CardInnerWrapper from '@/components/CardInnerWrapper';
+import MemberPhotoUpload from './MemberPhotoUpload';
 
 export default async function PhotosEditPage() {
     const userId = await getAuthUserId();
@@ -13,7 +14,14 @@ export default async function PhotosEditPage() {
     return (
 
         <CardInnerWrapper
-            header='Edit Photo'
+            header={
+                <>
+                    <div className='text-2xl font-semibold text-secondary'>
+                        Edit Photos
+                    </div>
+                    <MemberPhotoUpload />
+                </>
+            }
             body={<MemberPhotos photos={photos!} editing={true} mainImageUrl={member?.image} />}
         />
     )
