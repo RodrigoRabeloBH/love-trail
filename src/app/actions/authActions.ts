@@ -9,8 +9,6 @@ import { User } from "@prisma/client";
 import bcrypt from 'bcryptjs';
 import { AuthError } from "next-auth";
 
-export const dynamic = 'force-dynamic';
-
 export async function getSessionUser() {
     const session = await auth();
     return session;
