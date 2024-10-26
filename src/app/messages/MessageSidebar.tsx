@@ -1,5 +1,6 @@
 'use client'
 
+import { MessageDto } from '@/types';
 import { Chip } from '@nextui-org/react';
 import clsx from 'clsx';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
@@ -7,7 +8,11 @@ import React, { useState } from 'react'
 import { GoInbox } from 'react-icons/go';
 import { MdOutlineOutbox } from 'react-icons/md';
 
-export default function MessageSidebar() {
+type Props = {
+    messages: MessageDto[]
+}
+
+export default function MessageSidebar({ messages }: Props) {
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
@@ -15,7 +20,7 @@ export default function MessageSidebar() {
 
     const items = [
         { key: 'inbox', label: 'Inbox', icon: GoInbox, chip: true },
-        { key: 'outbox', label: 'Outbox', icon: MdOutlineOutbox, chip: true }
+        { key: 'outbox', label: 'Outbox', icon: MdOutlineOutbox, chip: false }
     ];
 
     const handleSelect = (key: string) => {
@@ -26,7 +31,7 @@ export default function MessageSidebar() {
     }
 
     return (
-        <div className='flex shadow-md rounded-lg cursor-pointer'>
+        <div className='flex shadow-md rounded-lg cursor-pointer mt-5'>
             {items.map(({ key, icon: Icon, label, chip }) => (
                 <div key={key}
                     className={clsx('flex flex-row items-center rounded-t-lg gap-2 p-3', {
@@ -39,7 +44,7 @@ export default function MessageSidebar() {
                     <div className='flex justify-between flex-grow'>
                         <span className='mr-3'>{label}</span>
                         {chip &&
-                            <Chip>5</Chip>
+                            <Chip>{messages?.length}</Chip>
                         }
                     </div>
                 </div>

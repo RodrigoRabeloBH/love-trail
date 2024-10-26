@@ -2,6 +2,7 @@
 import React from 'react'
 import MessageSidebar from './MessageSidebar'
 import { getMessagesByContainer } from '../actions/messageActions'
+import MessageTable from './MessageTable';
 
 export default async function MessagesPage({ searchParams }: { searchParams: { container: string } }) {
     const messages = await getMessagesByContainer(searchParams.container);
@@ -10,16 +11,10 @@ export default async function MessagesPage({ searchParams }: { searchParams: { c
         <div className='container mx-auto'>
             <div className='flex flex-col mx-5 md:mx-0'>
                 <div className=''>
-                    <MessageSidebar />
+                    <MessageSidebar messages={messages} />
                 </div>
                 <div className='mt-5'>
-                    {messages.length > 0 && (
-                        messages.map(message => (
-                            <p key={message.id}>
-                                {message.text}
-                            </p>
-                        ))
-                    )}
+                    <MessageTable messages={messages} />
                 </div>
             </div>
         </div>
